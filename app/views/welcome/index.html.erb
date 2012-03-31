@@ -8,24 +8,63 @@
   <div>&nbsp;</div>
 
   <div id="timers" data-role="content" class="ui-grid-a ui-content ui-sortable" role="main">
-    <% current_user.timers.each do |timer| %>
-      <div id="<%= timer.id %>" class="ui-block-b" data-id="<%= timer.id %>" data-label="<%= timer.label %>" data-icon="<%= timer.icon %>" class="timer" style="background:url(<%= timer.icon %>) <%= timer.color %> no-repeat center center; margin: 1%; width: 47%">
-        <div class="timer">
-          <div class="elapsed_time"><%= timer.elapsed_time %></div>
-          <div class="active"><%= timer.is_active? %></div>
-        </div>
-      </div>
-    <% end %>
+    Loading ...
   </div>
 </div><!-- /page -->
 
 
 <%= render partial: 'welcome/reports', locals: {reposrts: @reports} %>
 
+<script id="timerTemplate" type="text/x-jquery-tmpl">
+  <div id="${id}" class="ui-block-b timer-container" data-id="${id}" data-label="${label}" data-icon="${icon}" class="timer" style="background:${color} url(${icon}) no-repeat center center; margin: 1%; width: 47%">
+    <div class="timer">
+      <div class="elapsed_time">${elapsed_time}</div>
+    </div>
+  </div>
+</script>
 
 <script>
+  /**
+   * Convert number of seconds into time object
+   *
+   * @param integer secs Number of seconds to convert
+   * @return object
+   */
+  function secondsToTime(secs)
+  {
+  	var hours = Math.floor(secs / (60 * 60));
+
+  	var divisor_for_minutes = secs % (60 * 60);
+  	var minutes = Math.floor(divisor_for_minutes / 60);
+
+  	var divisor_for_seconds = divisor_for_minutes % 60;
+  	var seconds = Math.ceil(divisor_for_seconds);
+
+  	var obj = {
+  		"h": hours,
+  		"m": minutes,
+  		"s": seconds
+  	};
+  	return obj;
+  }
+
   $(function() {
-    $('.timer').parent().click(function() {
+    
+    var timers = [];
+    <% current_user.timers.each do |timer| %>
+      var timer = {
+        id: '<%= timer.id %>',
+        label: '<%= timer.label %>',
+        icon: '<%= timer.icon %>',
+        color: '<%= timer.color %>',
+        elapsed_time: '<%= timer.elapsed_time %>'
+      }
+      timers.push(timer);
+    <% end %>
+    
+    $('#timers').html($('#timerTemplate').tmpl(timers));
+    
+    $('.timer-container').click(function() {
       $.ajax({
         type: 'PUT',
         url: "/timers/" + $(this).data('id') + '.js'
@@ -37,6 +76,6 @@
     }).bind( "swiperight", function( event, data ){
       $.mobile.changePage( "#main", { transition: "slide", reverse:true} );
     });
-
+    
   });
 </script>

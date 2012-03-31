@@ -1,4 +1,10 @@
 $(function() {
-  $('div#<%= @timer.id %> .timer .elapsed_time').replaceWith('<div class="elapsed_time"><%= @timer.elapsed_time %></div>')
-  $('div#<%= @timer.id %> .timer .active').replaceWith('<div class="active"><%= @timer.is_active? %></div>')
+  var seconds = <%= @timer.elapsed_time %>;
+  var time = secondsToTime(seconds);
+  $('div#<%= @timer.id %> .timer .elapsed_time').replaceWith('<div class="elapsed_time"></div>')
+  <% if(@timer.is_active?) %>
+    $('div#<%= @timer.id %> ').addClass('active');
+  <% else %>
+    $('div#<%= @timer.id %> ').removeClass('active');
+  <% end %>
 })
