@@ -3,7 +3,7 @@ class TimersController < ApplicationController
     @timer = current_user.timers.find(params[:id])
     if params[:timer]
       @timer.update_attributes(params[:timer])
-    elsif params[:toggle_timer]
+    elsif
       @timer.toggle
     end
     respond_with(@timer)

@@ -1,6 +1,6 @@
 development:
-  :app_id: '330386580359184'
-  :app_secret: '018fb8ea2a962100dd247a02b832f9ae'
+  :app_id: '168193193204541'
+  :app_secret: '97726ca48f6bcd8749135586e07cc622'
   :scope: 'email, offline_access'
   :page: 'popup'
 
