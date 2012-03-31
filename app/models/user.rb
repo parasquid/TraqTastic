@@ -32,42 +32,48 @@ class User
       {
         label: 'Work',
         icon: '/images/icons/glyphicons_086_display.png',
-        ordinal: 1
+        ordinal: 1,
+        color: '#492900'
       }
     )
     u.timers.create!(
       {
         label: 'Gym',
         icon: '/images/icons/glyphicons_002_dog.png',
-        ordinal: 2
+        ordinal: 2,
+        color: '#755500'
       }
     )
     u.timers.create!(
       {
         label: 'Travel',
         icon: '/images/icons/glyphicons_028_cars.png',
-        ordinal: 3
+        ordinal: 3,
+        color: '#033880'
       }
     )
     u.timers.create!(
       {
         label: 'Shopping',
         icon: '/images/icons/glyphicons_202_shopping_cart.png',
-        ordinal: 4
+        ordinal: 4,
+        color: '#5b025b'
       }
     )
     u.timers.create!(
       {
         label: 'Meeting',
         icon: '/images/icons/glyphicons_043_group.png',
-        ordinal: 5
+        ordinal: 5,
+        color: '#025b2e'
       }
     )
     u.timers.create!(
       {
         label: 'Meals',
         icon: '/images/icons/glyphicons_276_cutlery.png',
-        ordinal: 6
+        ordinal: 6,
+        color: '#5b0202'
       }
     )
 

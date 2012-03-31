@@ -1,42 +1,42 @@
 <div data-role="page">
 
-	<div data-role="header" data-position="fixed">
-		
-		<h1><%= image_tag '/images/logo.png' %></h1>
-		<a href="#" data-icon="add" class="ui-btn-right" class="no-text">Add</a>
-	</div>
-	
-	<div id="timers" data-role="content" class="ui-grid-a">	
-		Loading ...
-	</div><!-- /content -->
+  <div data-role="header" data-position="fixed">
 
-<script id="timerTemplate" type="text/x-jquery-tmpl">
-  <div class="ui-block-b" data-id="${id}" data-label="${label}" data-icon="${icon}" class="timer" style="background:url(${icon}) no-repeat center center">
-   <div class="timer"><div class="close-btn"></div></div>
+    <h1><%= image_tag '/images/logo.png' %></h1>
   </div>
-</script>
-<script>
-  var editing = false;
-  $(function(){
-    
-    var timers = [];
-    var c = 0;
-    <% current_user.timers.each do |timer| %>
-      var timer = {
-        id: '<%= timer.id %>',
-        label: '<%= timer.label %>',
-        icon: '<%= timer.icon %>',
-        elapsed: '<%= timer.elapsed_time %>',
-        active: <%= timer.is_active? %>,
-        alternate: c % 2
-      }
-      c++;
-      timers.push(timer);
-    <% end %>
-    
-    $('#timers').html($( '#timerTemplate' ).tmpl( timers ));
-    
-    $(document)
+
+  <div id="timers" data-role="content" class="ui-grid-a">
+    Loading ...
+  </div><!-- /content -->
+
+  <script id="timerTemplate" type="text/x-jquery-tmpl">
+    <div class="ui-block-b" data-id="${id}" data-label="${label}" data-icon="${icon}" class="timer" style="background:url(${icon}) ${color} no-repeat center center">
+      <div class="timer"><div class="close-btn"></div></div>
+    </div>
+  </script>
+  <script>
+    var editing = false;
+    $(function(){
+
+      var timers = [];
+      var c = 0;
+  <% current_user.timers.each do |timer| %>
+        var timer = {
+          id: '<%= timer.id %>',
+          label: '<%= timer.label %>',
+          icon: '<%= timer.icon %>',
+          elapsed: '<%= timer.elapsed_time %>',
+          active: <%= timer.is_active? %>,
+          color: '<%= timer.color %>',
+          alternate: c % 2
+        }
+        c++;
+        timers.push(timer);
+  <% end %>
+
+      $('#timers').html($( '#timerTemplate' ).tmpl( timers ));
+
+      $(document)
       .bind('taphold',function(event, data){
         $('#timers').addClass('editing');
         editing = true;
@@ -48,6 +48,6 @@
         }
         $( "#timers" ).sortable();
       });
-  });
-</script>
+    });
+  </script>
 </div><!-- /page -->
