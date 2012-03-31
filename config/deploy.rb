@@ -19,7 +19,7 @@ role :app, "traqtastic.com"                          # This may be the same as y
 
 namespace :deploy do
   task :start, :roles => :app do
-    run "sudo rm -f /etc/nginx/sites-enabled/#{pid}.nginx.conf"
+    run "sudo rm -f /etc/nginx/sites-enabled/#{application}.nginx.conf"
     run "sudo ln -s #{deploy_to}/current/config/#{application}.nginx.conf /etc/nginx/sites-enabled"
     run "sudo /etc/init.d/nginx restart"
     run "touch #{current_release}/tmp/restart.txt"
