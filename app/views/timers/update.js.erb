@@ -1,7 +1,8 @@
 $(function() {
-  var seconds = <%= @timer.elapsed_time %>;
+  var seconds = parseInt(<%= @timer.elapsed_time %>);
   var time = secondsToTime(seconds);
-  $('div#<%= @timer.id %> .timer .elapsed_time').replaceWith('<div class="elapsed_time"></div>')
+  
+  $('div#<%= @timer.id %> .timer .elapsed_time').html(returnTime(seconds));
   <% if(@timer.is_active?) %>
     $('div#<%= @timer.id %> ').addClass('active');
   <% else %>
