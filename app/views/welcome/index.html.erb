@@ -1,4 +1,4 @@
-<div data-role="page">
+<div data-role="page" id="main">
 
   <div data-role="header" data-position="fixed">
 
@@ -19,11 +19,20 @@
   </div>
 </div><!-- /page -->
 
-<div>
-  <h1>Reports</h1>
-  <% @reports.each do |report| %>
-    <%= report.inspect %>
-  <% end %>
+<div data-role="page" id="reports">
+  <div data-role="header" data-position="fixed">
+
+    <h1><%= image_tag '/images/logo.png' %></h1>
+
+  </div>
+  <div>&nbsp;</div>
+
+  <div data-role="content">
+
+    <% @reports.each do |report| %>
+      <%= report.inspect %>
+    <% end %>
+  </div>
 </div>
 
 <script>
@@ -36,9 +45,9 @@
     });
 
     $( document ).bind( "swipeleft", function( event, data ){
-      $.mobile.changePage( "/reports", { transition: "slide"} );
+      $.mobile.changePage( "#reports", { transition: "slide"} );
     }).bind( "swiperight", function( event, data ){
-      $.mobile.changePage( "/", { transition: "slide", reverse:true} );
+      $.mobile.changePage( "#main", { transition: "slide", reverse:true} );
     });
 
   });
