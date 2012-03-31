@@ -15,9 +15,10 @@
 <%= render partial: 'welcome/reports', locals: {reposrts: @reports} %>
 
 <script id="timerTemplate" type="text/x-jquery-tmpl">
-  <div id="${id}" class="ui-block-b timer-container ${active}" data-id="${id}" data-et="${elapsed_time}" data-label="${label}" data-icon="${icon}" class="timer" style="background:${color} url(${icon}) no-repeat center center; margin: 1%; width: 47%">
+  <div id="${id}" class="ui-block-b timer-container ${active}" data-id="${id}" data-et="${elapsed_time}" data-label="${label}" data-icon="${icon}" class="timer" style="background-color:${color}; margin: 1%; width: 47%">
     <div class="timer">
       <div class="elapsed_time">${elapsed_time_text}</div>
+      <img src="${icon}">
     </div>
   </div>
 </script>
