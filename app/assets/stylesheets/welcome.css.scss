@@ -3,42 +3,46 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .ui-header img {
-	margin-top: 0px; padding: 0px;
+    margin-top: 0px; padding: 0px;
 }
 
 .fblogin:hover {
-	-moz-box-shadow: 0 0 8px #888;
-	-webkit-box-shadow: 0 0 8px#888;
-	box-shadow: 0 0 8px #888;
+    -moz-box-shadow: 0 0 8px #888;
+    -webkit-box-shadow: 0 0 8px#888;
+    box-shadow: 0 0 8px #888;
 }
 
 .fblogin {
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 15px;
-	background-image: -webkit-gradient(linear, left bottom, left top, from(#385080), to(#5578b3));
-	background-image: -moz-linear-gradient(90deg, #385080 0%, #5578b3 100%);
-	color: #fff;
-	text-shadow: 2px 2px 2px #6a6a6a;
-	border: 1px solid #1e304f;
-	margin-left: 2em !important;
-	margin-right: 2em !important;
-	margin-top: 40px;
-	
-	-webkit-transition: all ;
-  -moz-transition: all ;
-  -ms-transition: all ;
-  -o-transition: all ;
-  transition: all ;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 15px;
+    background-image: -webkit-gradient(linear, left bottom, left top, from(#385080), to(#5578b3));
+    background-image: -moz-linear-gradient(90deg, #385080 0%, #5578b3 100%);
+    color: #fff;
+    text-shadow: 2px 2px 2px #6a6a6a;
+    border: 1px solid #1e304f;
+    margin-left: 2em !important;
+    margin-right: 2em !important;
+    margin-top: 40px;
+
+    -webkit-transition: all ;
+    -moz-transition: all ;
+    -ms-transition: all ;
+    -o-transition: all ;
+    transition: all ;
 }
 
 .loginpage {
-	margin-top: 50px;
-	text-align: center !important;
+    margin-top: 50px;
+    text-align: center !important;
 }
 
 .loginpage .copy {
-	color: #8e8e8e;
-	text-shadow: 1px 1px 1px #dedede;
-	font-size: 0.8em;
+    color: #8e8e8e;
+    text-shadow: 1px 1px 1px #dedede;
+    font-size: 0.8em;
+}
+
+.ui-header .ui-title, .ui-footer .ui-title {
+    margin: .6em 30% 0em;
 }

@@ -33,7 +33,7 @@ class User
         label: 'Work',
         icon: '/images/icons/glyphicons_086_display.png',
         ordinal: 1,
-        color: '#492900'
+        color: 'rgba(135,76,1,1)'
       }
     )
     u.timers.create!(
@@ -41,7 +41,7 @@ class User
         label: 'Gym',
         icon: '/images/icons/glyphicons_002_dog.png',
         ordinal: 2,
-        color: '#755500'
+        color: 'rgba(190,139,2,1)'
       }
     )
     u.timers.create!(
@@ -49,7 +49,7 @@ class User
         label: 'Travel',
         icon: '/images/icons/glyphicons_028_cars.png',
         ordinal: 3,
-        color: '#033880'
+        color: 'rgba(0,81,191,1)'
       }
     )
     u.timers.create!(
@@ -57,7 +57,7 @@ class User
         label: 'Shopping',
         icon: '/images/icons/glyphicons_202_shopping_cart.png',
         ordinal: 4,
-        color: '#5b025b'
+        color: 'rgba(163,0,163,1)'
       }
     )
     u.timers.create!(
@@ -65,7 +65,7 @@ class User
         label: 'Meeting',
         icon: '/images/icons/glyphicons_043_group.png',
         ordinal: 5,
-        color: '#025b2e'
+        color: 'rgba(0,136,67,1)'
       }
     )
     u.timers.create!(
@@ -73,7 +73,7 @@ class User
         label: 'Meals',
         icon: '/images/icons/glyphicons_276_cutlery.png',
         ordinal: 6,
-        color: '#5b0202'
+        color: 'rgba(155,0,0,1)'
       }
     )
 
