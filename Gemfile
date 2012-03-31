@@ -5,7 +5,8 @@ gem 'rails', '3.1.1'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-
+gem 'mongoid'
+gem 'bson_ext'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -29,3 +30,5 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
+gem 'devise'
+gem "omniauth-facebook"
