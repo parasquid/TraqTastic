@@ -19,21 +19,9 @@
   </div>
 </div><!-- /page -->
 
-<div data-role="page" id="reports">
-  <div data-role="header" data-position="fixed">
 
-    <h1><%= image_tag '/images/logo.png' %></h1>
+<%= render partial: 'welcome/reports', locals: {reposrts: @reports} %>
 
-  </div>
-  <div>&nbsp;</div>
-
-  <div data-role="content">
-
-    <% @reports.each do |report| %>
-      <%= report.inspect %>
-    <% end %>
-  </div>
-</div>
 
 <script>
   $(function() {

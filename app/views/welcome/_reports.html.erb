@@ -1,0 +1,28 @@
+<% @reports.each do |report| %>
+
+  <div data-role="page" id="reports">
+    <div data-role="header" data-position="fixed">
+
+      <h1><%= image_tag '/images/logo.png' %></h1>
+
+    </div>
+    <div>&nbsp;</div>
+
+    <div data-role="content">
+
+
+      <script>
+        window.onload = function () {
+          var r = Raphael("id<%= report.id %>");
+
+          r.text(320, 70, "<%= report.date %>").attr({ font: "20px sans-serif" });
+          r.piechart(320, 240, 100, <%=j report.timers.map{|timer| timer['elapsed_time'].to_i}.to_s %> );
+        };
+      </script>
+
+      <div id="id<%= report.id %>">
+      </div>
+    <% end %>
+
+  </div>
+</div>
