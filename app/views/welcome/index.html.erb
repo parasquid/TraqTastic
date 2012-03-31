@@ -9,9 +9,22 @@
 
   <div id="timers" data-role="content" class="ui-grid-a ui-content ui-sortable" role="main">
     <% current_user.timers.each do |timer| %>
-      <div class="ui-block-b" data-id="<%= timer.id %>" data-label="<%= timer.label %>" data-icon="<%= timer.icon %>" class="timer" style="background:url(<%= timer.icon %>) <%= timer.color %> no-repeat center center; margin: 1%; width: 47%">
-        <div class="timer"><div class="close-btn"></div></div>
+      <div id="<%= timer.id %>" class="ui-block-b" data-id="<%= timer.id %>" data-label="<%= timer.label %>" data-icon="<%= timer.icon %>" class="timer" style="background:url(<%= timer.icon %>) <%= timer.color %> no-repeat center center; margin: 1%; width: 47%">
+        <div class="timer">
+          <div class="elapsed_time"><%= timer.elapsed_time %></div>
+          <div class="active"><%= timer.is_active? %></div>
+        </div>
       </div>
     <% end %>
   </div>
 </div><!-- /page -->
+<script>
+  $(function() {
+    $('.timer').parent().click(function() {
+      $.ajax({
+        type: 'PUT',
+        url: "/timers/" + $(this).data('id') + '.js'
+      });
+    });
+  });
+</script>

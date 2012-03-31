@@ -3,10 +3,13 @@ class TimersController < ApplicationController
     @timer = current_user.timers.find(params[:id])
     if params[:timer]
       @timer.update_attributes(params[:timer])
-    elsif
+    else
       @timer.toggle
     end
-    respond_with(@timer)
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js { }
+    end
   end
   def show
     @timer = current_user.timers.find(params[:id])

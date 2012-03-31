@@ -1,0 +1,4 @@
+$(function() {
+  $('div#<%= @timer.id %> .timer .elapsed_time').replaceWith('<div class="elapsed_time"><%= @timer.elapsed_time %></div>')
+  $('div#<%= @timer.id %> .timer .active').replaceWith('<div class="active"><%= @timer.is_active? %></div>')
+})

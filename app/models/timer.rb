@@ -26,7 +26,7 @@ class Timer
       self.active = true
       self.active_since = Time.now
     end
-    save!
+    self.save!
   end
 
 end
