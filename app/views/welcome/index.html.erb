@@ -6,25 +6,30 @@
 		<a href="#" data-icon="add" class="ui-btn-right" class="no-text">Add</a>
 	</div>
 	
-	<div id="timers" data-role="content">	
+	<div id="timers" data-role="content" class="ui-grid-a">	
 		Loading ...
 	</div><!-- /content -->
 
 <script id="timerTemplate" type="text/x-jquery-tmpl">
-  <div data-id="${id}" data-label="${label}" data-icon="${icon}" class="timer" style="background:url(${icon}) no-repeat center center">
+  <div class="{{if !alternate}}ui-block-a{{else}}ui-block-b{{/if}}"
+   data-id="${id}" data-label="${label}" data-icon="${icon}" class="timer" style="background:url(${icon}) no-repeat center center">
+   <div class="timer"></div>
   </div>
 </script>
 <script>
   $(function(){
     var timers = [];
+    var c = 0;
     <% current_user.timers.each do |timer| %>
       var timer = {
         id: '<%= timer.id %>',
         label: '<%= timer.label %>',
         icon: '<%= timer.icon %>',
         elapsed: '<%= timer.elapsed_time %>',
-        active: <%= timer.is_active? %> 
+        active: <%= timer.is_active? %>,
+        alternate: c % 2
       }
+      c++;
       timers.push(timer);
     <% end %>
     $("#timers").html($( "#timerTemplate" ).tmpl( timers ));

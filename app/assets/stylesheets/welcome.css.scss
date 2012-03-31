@@ -15,7 +15,7 @@
 .fblogin {
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
-	border-radius: 3px;
+	border-radius: 15px;
 	background-image: -webkit-gradient(linear, left bottom, left top, from(#385080), to(#5578b3));
 	background-image: -moz-linear-gradient(90deg, #385080 0%, #5578b3 100%);
 	color: #fff;
@@ -24,6 +24,12 @@
 	margin-left: 2em !important;
 	margin-right: 2em !important;
 	margin-top: 40px;
+	
+	-webkit-transition: all ;
+  -moz-transition: all ;
+  -ms-transition: all ;
+  -o-transition: all ;
+  transition: all ;
 }
 
 .loginpage {

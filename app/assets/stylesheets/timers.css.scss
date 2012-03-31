@@ -2,14 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.timer {
+.timers {
   text-align:center;
 }
 
 .timer {
-  border: 1px solid black;
-  width: 49%;
-  display:inline-block;
   margin:5px;
-  height:50px;
+  height:160px;
+  border:1px solid black;
 }
