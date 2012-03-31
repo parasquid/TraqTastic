@@ -8,7 +8,7 @@ class Timer
   field :icon, type: String
   field :ordinal, type: Integer
   field :active_since, type: Time
-  field :color, type: String, default: 'Blue'
+  field :color, type: String, default: '#00ff00'
   field :elapsed_time, type: BigDecimal, default: 0
   field :active, type: Boolean, default: false
 
