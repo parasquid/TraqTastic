@@ -12,14 +12,14 @@ class User
       u.timers.create!(
         {
           label: 'Work',
-          icon: '/images/icons/glyphicons_023_cogwheels.png',
+          icon: '/images/icons/glyphicons_086_display.png',
           ordinal: 1
         }
       )
       u.timers.create!(
         {
           label: 'Gym',
-          icon: '/images/icons/glyphicons_282_cardio.png',
+          icon: '/images/icons/glyphicons_002_dog.png',
           ordinal: 2
         }
       )
@@ -40,7 +40,7 @@ class User
       u.timers.create!(
         {
           label: 'Meeting',
-          icon: '/images/icons/glyphicons_244_conversation.png',
+          icon: '/images/icons/glyphicons_043_group.png',
           ordinal: 5
         }
       )
