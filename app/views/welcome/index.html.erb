@@ -1,4 +1,4 @@
-<div data-role="page" id="main">
+<div data-role="page" id="main" style="background: black;">
 
 <script>
   var pagination = ['/'];
@@ -54,15 +54,15 @@
   	};
   	return obj;
   }
-  
+
   function returnTime(secs){
     var obj = secondsToTime(secs);
-    
+
     var time = '';
     if(obj.h){
       time += obj.h + ' hr ';
     }
-    
+
     time += obj.m + ' min ';
     time += obj.s + ' sec ';
     return time;
@@ -85,21 +85,21 @@
     <% end %>
 
     $('#timers').html($('#timerTemplate').tmpl(timers));
-    
+
     $('.timer-container').click(function(){
-      
+
       if( !$(this).hasClass('active') ){
         toggleMe(this);
         $(this).addClass('active current');
       }
-      
+
       $('.timer-container.active').not('.current').each(function(){
         toggleMe(this);
         $(this).removeClass('active');
       });
-      
+
       $('.timer-container.active.current').removeClass('current');
-      
+
     });
 
     $( document ).bind( "swipeleft", function( event, data ){
@@ -119,14 +119,14 @@
     });
 
   });
-  
+
   function toggleMe(obj){
     $.ajax({
       type: 'PUT',
       url: "/timers/" + $(obj).data('id') + '.js'
     });
   }
-  
+
   setInterval(updateTimers,1000);
   function updateTimers(){
     $('.timer-container.active').each(function(){
