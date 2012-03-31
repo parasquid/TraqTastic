@@ -32,6 +32,7 @@ GEM
     addressable (2.2.7)
     arel (2.2.3)
     bcrypt-ruby (3.0.1)
+    blankslate (2.1.2.4)
     bson (1.6.1)
     bson_ext (1.6.1)
       bson (~> 1.6.1)
@@ -58,6 +59,9 @@ GEM
     hashie (1.2.0)
     hike (1.2.1)
     i18n (0.6.0)
+    jbuilder (0.4.0)
+      activesupport (>= 3.0.0)
+      blankslate (>= 2.1.2.4)
     jquery-rails (1.0.19)
       railties (~> 3.0)
       thor (~> 0.14)
@@ -144,6 +148,7 @@ DEPENDENCIES
   bson_ext
   coffee-rails (~> 3.1.1)
   devise
+  jbuilder
   jquery-rails
   mongoid
   omniauth-facebook

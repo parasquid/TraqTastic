@@ -8,7 +8,6 @@ class TimersController < ApplicationController
     @timer = current_user.timers.find(params[:id])
     respond_to do |format|
       format.html { redirect_to root_path }
-      format.json { render @timer }
     end
   end
 end
