@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1"> 
-  
-  <title>TraqTastic</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<div data-role="header">
-		<h1>TraqTastic</h1>
-	</div><!-- /header -->
+    <title>TraqTastic</title>
+    <%= stylesheet_link_tag    "application" %>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+    <%= javascript_include_tag "application" %>
+    <script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
 
-<%= yield %>
+    <div data-role="header">
+      <h1>TraqTastic</h1>
+    </div><!-- /header -->
 
-</body>
+    <%= yield %>
+
+  </body>
 </html>

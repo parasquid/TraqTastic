@@ -39,3 +39,5 @@ gem 'devise'
 gem "omniauth-facebook"
 
 gem 'jbuilder'
+
+gem 'capistrano'
