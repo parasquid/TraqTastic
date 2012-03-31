@@ -5,5 +5,7 @@ TraqTastic::Application.routes.draw do
     get 'sign_out', :to => 'users/sessions#destroy', :as => :destroy_user_session
   end
   resources :timers
+  resources :reports
+
   root :to => "welcome#index"
 end
