@@ -19,6 +19,13 @@
   </div>
 </div><!-- /page -->
 
+<div>
+  <h1>Reports</h1>
+  <% @reports.each do |report| %>
+    <%= report.inspect %>
+  <% end %>
+</div>
+
 <script>
   $(function() {
     $('.timer').parent().click(function() {
@@ -27,12 +34,12 @@
         url: "/timers/" + $(this).data('id') + '.js'
       });
     });
-    
+
     $( document ).bind( "swipeleft", function( event, data ){
       $.mobile.changePage( "/reports", { transition: "slide"} );
     }).bind( "swiperight", function( event, data ){
       $.mobile.changePage( "/", { transition: "slide", reverse:true} );
     });
-    
+
   });
 </script>
