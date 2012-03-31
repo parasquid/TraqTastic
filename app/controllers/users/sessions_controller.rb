@@ -1,6 +1,8 @@
 class Users::SessionsController < Devise::SessionsController
   def new
-    #redirect_to omniauth_authorize_path(resource_name, :facebook)
+    unless current_user.signed_in?
+      redirect_to omniauth_authorize_path(resource_name, :facebook)
+    end
   end
 
 end
