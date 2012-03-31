@@ -41,3 +41,4 @@ gem "omniauth-facebook"
 gem 'jbuilder'
 
 gem 'capistrano'
+gem 'therubyracer'

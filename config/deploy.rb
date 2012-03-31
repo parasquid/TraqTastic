@@ -6,7 +6,7 @@ require "rvm/capistrano"                  # Load RVM's capistrano plugin.
 set :rvm_ruby_string, '1.9.3-p0'        # Or whatever env you want it to run in.
 
 set :application, "TraqTastic"
-set :repository,  "git@github.com:parasquid/TraqTastic.git"
+set :repository,  "git://github.com/parasquid/TraqTastic.git"
 set :use_sudo, false
 set :user, "tristan"
 set :port, 20022
