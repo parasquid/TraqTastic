@@ -7,10 +7,26 @@ class Timer
   field :label, type: String
   field :icon, type: String
   field :ordinal, type: Integer
+  field :active_since, type: Time
   field :color, type: String, default: 'Blue'
   field :elapsed_time, type: BigDecimal, default: 0
-  field :is_active?, type: Boolean, default: false
+  field :active, type: Boolean, default: false
 
   belongs_to :user
+
+  def is_active?
+    !!self.active
+  end
+
+  def toggle
+    if is_active?
+      self.active = false
+      self.elapsed_time += (Time.now - self.active_since)
+    else
+      self.active = true
+      self.active_since = Time.now
+    end
+    save!
+  end
 
 end
