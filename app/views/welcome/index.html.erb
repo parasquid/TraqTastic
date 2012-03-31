@@ -1,6 +1,6 @@
 <div data-role="page">
 
-	<div data-role="header" data-position="inline">
+	<div data-role="header" data-position="fixed">
 		
 		<h1><%= image_tag '/images/logo.png' %></h1>
 		<a href="#" data-icon="add" class="ui-btn-right" class="no-text">Add</a>
@@ -11,13 +11,14 @@
 	</div><!-- /content -->
 
 <script id="timerTemplate" type="text/x-jquery-tmpl">
-  <div class="{{if !alternate}}ui-block-a{{else}}ui-block-b{{/if}}"
-   data-id="${id}" data-label="${label}" data-icon="${icon}" class="timer" style="background:url(${icon}) no-repeat center center">
-   <div class="timer"></div>
+  <div class="ui-block-b" data-id="${id}" data-label="${label}" data-icon="${icon}" class="timer" style="background:url(${icon}) no-repeat center center">
+   <div class="timer"><div class="close-btn"></div></div>
   </div>
 </script>
 <script>
+  var editing = false;
   $(function(){
+    
     var timers = [];
     var c = 0;
     <% current_user.timers.each do |timer| %>
@@ -32,7 +33,21 @@
       c++;
       timers.push(timer);
     <% end %>
-    $("#timers").html($( "#timerTemplate" ).tmpl( timers ));
+    
+    $('#timers').html($( '#timerTemplate' ).tmpl( timers ));
+    
+    $(document)
+      .bind('taphold',function(event, data){
+        $('#timers').addClass('editing');
+        editing = true;
+      })
+      .bind('vmousedown',function(event, data){
+        if(false){ //editing){
+          $('#timers').removeClass('editing');
+          editing = false;
+        }
+        $( "#timers" ).sortable();
+      });
   });
 </script>
 </div><!-- /page -->
