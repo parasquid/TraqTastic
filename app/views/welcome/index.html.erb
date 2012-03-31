@@ -37,7 +37,15 @@
 <% end %>
 
     $('#timers').html($( '#timerTemplate' ).tmpl( timers ));
-
+    
+    $('#timers .timer').dblclick(function(){
+      $.mobile.changePage( '/timers/' + $(this).parent().data('id') + '/edit/',{
+      	transition: "slide",
+      	reverse: true,
+      	changeHash: false
+      });
+    });
+    
   });
   </script>
 </div><!-- /page -->

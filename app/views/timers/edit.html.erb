@@ -1,3 +1,13 @@
+<div data-role="page">
+
+	<div data-role="header" data-position="fixed">
+		
+		<h1><%= image_tag '/images/logo.png' %></h1>
+
+	</div>
+
+  <div data-role="content">
+
 <%= form_for @timer do |f| %>
   <%= f.label :label %>
   <%= f.text_field :label %>
@@ -7,3 +17,7 @@
   <%= f.text_field :icon %>
   <%= f.submit %>
 <% end %>
+
+  </div>
+
+</div>
