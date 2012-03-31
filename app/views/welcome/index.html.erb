@@ -38,18 +38,6 @@
 
     $('#timers').html($( '#timerTemplate' ).tmpl( timers ));
 
-    $(document)
-    .bind('taphold',function(event, data){
-      $('#timers').addClass('editing');
-      editing = true;
-    })
-    .bind('vmousemove',function(event, data){
-      if(false){ //editing){
-        $('#timers').removeClass('editing');
-        editing = false;
-      }
-      $( "#timers" ).sortable();
-    });
   });
   </script>
 </div><!-- /page -->
