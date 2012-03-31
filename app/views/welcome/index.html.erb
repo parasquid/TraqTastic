@@ -5,7 +5,6 @@
     <h1><%= image_tag '/images/logo.png' %></h1>
 
   </div>
-  <div>&nbsp;</div>
 
   <div id="timers" data-role="content" class="ui-grid-a ui-content ui-sortable" role="main">
     Loading ...
@@ -49,7 +48,7 @@
   }
 
   $(function() {
-    
+
     var timers = [];
     <% current_user.timers.each do |timer| %>
       var timer = {
@@ -61,9 +60,9 @@
       }
       timers.push(timer);
     <% end %>
-    
+
     $('#timers').html($('#timerTemplate').tmpl(timers));
-    
+
     $('.timer-container').click(function() {
       $.ajax({
         type: 'PUT',
@@ -76,6 +75,6 @@
     }).bind( "swiperight", function( event, data ){
       $.mobile.changePage( "#main", { transition: "slide", reverse:true} );
     });
-    
+
   });
 </script>
