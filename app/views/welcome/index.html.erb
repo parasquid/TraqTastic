@@ -1,2 +1,8 @@
 <h1>Logged in as <%= current_user.email %></h1>
 <%= link_to 'Logout', destroy_user_session_path %>
+
+<% current_user.timers.each do |timer| %>
+  <div style="border: solid 2px black; margin: 12px; padding: 12px;">
+    <%= render timer %>
+  </div>
+<% end %>

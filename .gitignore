@@ -5,3 +5,4 @@ tmp/
 .sass-cache/
 /nbproject/private/
 /nbproject
+.DS_Store
