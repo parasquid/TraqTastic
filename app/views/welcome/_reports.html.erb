@@ -1,6 +1,8 @@
-<% @reports.each do |report| %>
-
-  <div data-role="page" id="reports">
+<% i=1; @reports.each do |report| %>
+  
+  <script>pagination.push('#reports-<%=i%>');</script>
+  <div data-role="page" id="reports-<%=i%>">
+    
     <div data-role="header" data-position="fixed">
 
       <h1><%= image_tag '/images/logo.png' %></h1>
@@ -8,20 +10,22 @@
     </div>
 
     <div data-role="content">
-
-
+      
+      <h2 style="text-align:center"><%= report.date %></h2>
+      
+      <div class="piechart" id="id<%= report.id %>"></div>
+      
       <script>
-        window.onload = function () {
-          var r = Raphael("id<%= report.id %>");
-
-          r.text(320, 70, "<%= report.date %>").attr({ font: "20px sans-serif" });
-          r.piechart(320, 240, 100, <%=j report.timers.map{|timer| timer['elapsed_time'].to_i}.to_s %> );
-        };
+        $(function () {
+          var pie = Raphael("id<%= report.id %>")
+            .piechart(100, 100, 100, <%=j report.timers.map{|timer| timer['elapsed_time'].to_i}.to_s %>, <%= report.timers.map{|timer| timer['label']}.to_s.html_safe %>);
+        });
       </script>
 
-      <div id="id<%= report.id %>">
-      </div>
-    <% end %>
+    </div>
 
   </div>
-</div>
+
+  <% i = i + 1 %>
+
+<% end %>

@@ -1,3 +1,8 @@
+<script>
+  var pagination = ['/'];
+  var currentpage = 0;
+</script>
+
 <div data-role="page" id="main">
 
   <div data-role="header" data-position="fixed">
@@ -24,6 +29,8 @@
 </script>
 
 <script>
+  
+  
   /**
    * Convert number of seconds into time object
    *
@@ -96,9 +103,19 @@
     });
 
     $( document ).bind( "swipeleft", function( event, data ){
-      $.mobile.changePage( "#reports", { transition: "slide"} );
+      
+      if(currentpage < pagination.length)
+        currentpage++;
+        
+      $.mobile.changePage( pagination[currentpage], { transition: "slide"} );
+      
     }).bind( "swiperight", function( event, data ){
-      $.mobile.changePage( "#main", { transition: "slide", reverse:true} );
+      
+      if(currentpage > 0)
+        currentpage--;
+      
+      $.mobile.changePage( pagination[currentpage], { transition: "slide", reverse:true} );
+    
     });
 
   });
