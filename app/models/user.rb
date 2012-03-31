@@ -31,7 +31,7 @@ class User
     u.timers.create!(
       {
         label: 'Work',
-        icon: '/images/icons/glyphicons_086_display.png',
+        icon: '/images/icons/glyphicons_086_display@2x.png',
         ordinal: 1,
         color: 'rgba(135,76,1,1)'
       }
@@ -39,7 +39,7 @@ class User
     u.timers.create!(
       {
         label: 'Gym',
-        icon: '/images/icons/glyphicons_002_dog.png',
+        icon: '/images/icons/glyphicons_002_dog@2x.png',
         ordinal: 2,
         color: 'rgba(190,139,2,1)'
       }
@@ -47,7 +47,7 @@ class User
     u.timers.create!(
       {
         label: 'Travel',
-        icon: '/images/icons/glyphicons_028_cars.png',
+        icon: '/images/icons/glyphicons_028_cars@2x.png',
         ordinal: 3,
         color: 'rgba(0,81,191,1)'
       }
@@ -55,7 +55,7 @@ class User
     u.timers.create!(
       {
         label: 'Shopping',
-        icon: '/images/icons/glyphicons_202_shopping_cart.png',
+        icon: '/images/icons/glyphicons_202_shopping_cart@2x.png',
         ordinal: 4,
         color: 'rgba(163,0,163,1)'
       }
@@ -63,7 +63,7 @@ class User
     u.timers.create!(
       {
         label: 'Meeting',
-        icon: '/images/icons/glyphicons_043_group.png',
+        icon: '/images/icons/glyphicons_043_group@2x.png',
         ordinal: 5,
         color: 'rgba(0,136,67,1)'
       }
@@ -71,7 +71,7 @@ class User
     u.timers.create!(
       {
         label: 'Meals',
-        icon: '/images/icons/glyphicons_276_cutlery.png',
+        icon: '/images/icons/glyphicons_276_cutlery@2x.png',
         ordinal: 6,
         color: 'rgba(155,0,0,1)'
       }
