@@ -52,17 +52,17 @@
 
 }
 
-.timer img {
-  
+.timer .icon {
   position:absolute;
-  left:50%;
-  top:50%;
-  margin-left:-36px;
-  margin-top:-25px;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  
 }
 
 
-.timer-container.active .timer img {
+.timer-container.active .timer .icon {
   
   -webkit-animation-name:             pulse; 
   -webkit-animation-duration:         1s; 
