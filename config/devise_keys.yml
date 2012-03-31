@@ -1,0 +1,18 @@
+development:
+  :app_id: '168193193204541'
+  :app_secret: '97726ca48f6bcd8749135586e07cc622'
+  :scope: 'email, offline_access'
+  :page: 'popup'
+
+staging:
+  :app_id: '114727308555956'
+  :app_secret: 'f199b4b27caf26ff26c96f19e3af51b5'
+  :scope: 'email, offline_access'
+  :page: 'popup'
+
+production:
+  :app_id: '114727308555956'
+  :app_secret: 'f199b4b27caf26ff26c96f19e3af51b5'
+  :scope: 'email, offline_access'
+  :page: 'popup'
+

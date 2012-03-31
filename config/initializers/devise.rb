@@ -220,4 +220,12 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end
+
+  # Loads settings from the config file into a hash
+  DEVISE_KEYS = YAML.load_file("#{Rails.root}/config/devise_keys.yml")
+
+  require 'omniauth-facebook'
+  config.omniauth :facebook, DEVISE_KEYS[Rails.env][:app_id], DEVISE_KEYS[Rails.env][:app_secret],
+    scope: DEVISE_KEYS[Rails.env][:scope],
+    page: DEVISE_KEYS[Rails.env][:page]
 end
