@@ -3,7 +3,7 @@
 	<div data-role="header" data-position="fixed">
 		
 		<h1><%= image_tag '/images/logo.png' %></h1>
-		<a href="#" data-icon="add" class="ui-btn-right" class="no-text">Add</a>
+
 	</div>
 	
 	<div id="timers" data-role="content" class="ui-grid-a">	
@@ -11,8 +11,8 @@
 	</div><!-- /content -->
 
 <script id="timerTemplate" type="text/x-jquery-tmpl">
-  <div class="ui-block-b" data-id="${id}" data-label="${label}" data-icon="${icon}" class="timer" style="background:url(${icon}) no-repeat center center">
-   <div class="timer"><div class="close-btn"></div></div>
+  <div class="ui-block-b" data-id="${id}" data-label="${label}" data-icon="${icon}" data-elapsed="${elapsed}" class="timer">
+   <div class="timer" style="background:${color} url(${icon}) no-repeat center center"><div class="close-btn"></div></div>
   </div>
 </script>
 <script>
@@ -25,6 +25,7 @@
       var timer = {
         id: '<%= timer.id %>',
         label: '<%= timer.label %>',
+        color: '<%= timer.color %>',
         icon: '<%= timer.icon %>',
         elapsed: '<%= timer.elapsed_time %>',
         active: <%= timer.is_active? %>,
@@ -40,65 +41,23 @@
       .bind('taphold',function(event, data){
         $('#timers').addClass('editing');
         editing = true;
-      })
-      .bind('vmousemove',function(event, data){
-        if(false){ //editing){
-          $('#timers').removeClass('editing');
-          editing = false;
-        }
-        $( "#timers" ).sortable();
       });
+    
+    $('#timers .timer').click(function(){
+      $.ajax({
+        type: "PUT",
+        url: "/timers/" + $(this).parent().data('id')
+      });
+    }).addSwipeEvents().bind('doubletap', function(evt, touch) {
+      alert('')
+      if(editing){
+        $.mobile.changePage( "/timers/" + $(this).parent().data('id') + "/edit", {
+        	type: "post",
+        	data: $("form#search").serialize()
+        });
+      }
+    });
+    
   });
-  
-  /*
-   * A bridge between iPad and iPhone touch events and jquery draggable, sortable etc. mouse interactions.
-   * @author Oleg Slobodskoi  
-   */
-  /iPad|iPhone/.test(navigator.userAgent) && (function($) {
-
-      var proto = $.ui.mouse.prototype,
-          _mouseInit = proto._mouseInit;
-
-      $.extend(proto, {
-          _mouseInit: function() {
-              this.element.bind("touchstart." + this.widgetName, $.proxy(this, "_touchStart"));
-
-              _mouseInit.apply(this, arguments);
-          },
-
-          _touchStart: function(event) {
-              if (event.originalEvent.targetTouches.length != 1) {
-                  return false;
-              }
-
-              this.element.bind("touchmove." + this.widgetName, $.proxy(this, "_touchMove")).bind("touchend." + this.widgetName, $.proxy(this, "_touchEnd"));
-
-              this._modifyEvent(event);
-
-              this._mouseDown(event);
-
-              return false;
-          },
-
-          _touchMove: function(event) {
-              this._modifyEvent(event);
-              this._mouseMove(event);
-          },
-
-          _touchEnd: function(event) {
-              this.element.unbind("touchmove." + this.widgetName).unbind("touchend." + this.widgetName);
-              this._mouseUp(event);
-          },
-
-          _modifyEvent: function(event) {
-              event.which = 1;
-              var target = event.originalEvent.targetTouches[0];
-              event.pageX = target.clientX;
-              event.pageY = target.clientY;
-          }
-
-      });
-
-  })(jQuery);
 </script>
 </div><!-- /page -->
