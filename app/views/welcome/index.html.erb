@@ -15,9 +15,9 @@
 <%= render partial: 'welcome/reports', locals: {reposrts: @reports} %>
 
 <script id="timerTemplate" type="text/x-jquery-tmpl">
-  <div id="${id}" class="ui-block-b timer-container" data-id="${id}" data-label="${label}" data-icon="${icon}" class="timer" style="background:${color} url(${icon}) no-repeat center center; margin: 1%; width: 47%">
+  <div id="${id}" class="ui-block-b timer-container ${active}" data-id="${id}" data-et="${elapsed_time}" data-label="${label}" data-icon="${icon}" class="timer" style="background:${color} url(${icon}) no-repeat center center; margin: 1%; width: 47%">
     <div class="timer">
-      <div class="elapsed_time">${elapsed_time}</div>
+      <div class="elapsed_time">${elapsed_time_text}</div>
     </div>
   </div>
 </script>
@@ -46,6 +46,19 @@
   	};
   	return obj;
   }
+  
+  function returnTime(secs){
+    var obj = secondsToTime(secs);
+    
+    var time = '';
+    if(obj.h){
+      time += obj.h + ' hr ';
+    }
+    
+    time += obj.m + ' min ';
+    time += obj.s + ' sec ';
+    return time;
+  }
 
   $(function() {
 
@@ -56,18 +69,29 @@
         label: '<%= timer.label %>',
         icon: '<%= timer.icon %>',
         color: '<%= timer.color %>',
-        elapsed_time: '<%= timer.elapsed_time %>'
+        elapsed_time: parseInt(<%= timer.elapsed_time %>),
+        elapsed_time_text: returnTime(parseInt(<%= timer.elapsed_time %>)),
+        active: '<% if ( timer.active? ) %>active<% end %>'
       }
       timers.push(timer);
     <% end %>
 
     $('#timers').html($('#timerTemplate').tmpl(timers));
-
-    $('.timer-container').click(function() {
-      $.ajax({
-        type: 'PUT',
-        url: "/timers/" + $(this).data('id') + '.js'
+    
+    $('.timer-container').click(function(){
+      
+      if( !$(this).hasClass('active') ){
+        toggleMe(this);
+        $(this).addClass('active current');
+      }
+      
+      $('.timer-container.active').not('.current').each(function(){
+        toggleMe(this);
+        $(this).removeClass('active');
       });
+      
+      $('.timer-container.active.current').removeClass('current');
+      
     });
 
     $( document ).bind( "swipeleft", function( event, data ){
@@ -77,4 +101,21 @@
     });
 
   });
+  
+  function toggleMe(obj){
+    $.ajax({
+      type: 'PUT',
+      url: "/timers/" + $(obj).data('id') + '.js'
+    });
+  }
+  
+  setInterval(updateTimers,1000);
+  function updateTimers(){
+    $('.timer-container.active').each(function(){
+      var et = parseInt($(this).data('et'));
+
+      $(this).data('et', ++et);
+      $(this).find('.elapsed_time').html(returnTime(et));
+    });
+  }
 </script>
