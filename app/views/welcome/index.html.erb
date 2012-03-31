@@ -101,7 +101,9 @@
       $('.timer-container.active.current').removeClass('current');
 
     });
-
+    
+    $.event.special.swipe.horizontalDistanceThreshold = 130;
+    
     $( document ).bind( "swipeleft", function( event, data ){
       
       if(currentpage < pagination.length)
