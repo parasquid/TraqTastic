@@ -11,8 +11,8 @@ staging:
   :page: 'popup'
 
 production:
-  :app_id: '114727308555956'
-  :app_secret: 'f199b4b27caf26ff26c96f19e3af51b5'
+  :app_id: '330386580359184'
+  :app_secret: '018fb8ea2a962100dd247a02b832f9ae'
   :scope: 'email, offline_access'
   :page: 'popup'
 
