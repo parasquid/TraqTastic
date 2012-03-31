@@ -1,10 +1,13 @@
-<%= form_for(timer) do |f| %>
-  <%= timer.label %><br />
-  <%= image_tag timer.icon %><br />
-  <%= timer.elapsed_time %><br />
-  <% if timer.is_active? %>
-    <%= f.submit 'TURN OFF' %>
-  <% else %>
-    <%= f.submit 'TURN ON' %>
+<div id="<%= timer.id %>">
+  <%= form_for(timer) do |f| %>
+    <%= timer.label %><br />
+    <%= image_tag timer.icon %><br />
+    <%= timer.elapsed_time %><br />
+
+    <% if timer.is_active? %>
+      <%= f.submit 'TURN OFF' %>
+    <% else %>
+      <%= f.submit 'TURN ON' %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
