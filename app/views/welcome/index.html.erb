@@ -1,8 +1,33 @@
-<h1>Logged in as <%= current_user.email %></h1>
-<%= link_to 'Logout', destroy_user_session_path %>
+<div data-role="page">
 
-<% current_user.timers.each do |timer| %>
-  <div style="border: solid 2px black; margin: 12px; padding: 12px;">
-    <%= render timer %>
+	<div data-role="header" data-position="inline">
+		
+		<h1><%= image_tag '/images/logo.png' %></h1>
+		<a href="#" data-icon="add" class="ui-btn-right" class="no-text">Add</a>
+	</div>
+	
+	<div id="timers" data-role="content">	
+		Loading ...
+	</div><!-- /content -->
+
+<script id="timerTemplate" type="text/x-jquery-tmpl">
+  <div data-id="${id}" data-label="${label}" data-icon="${icon}" class="timer" style="background:url(${icon}) no-repeat center center">
   </div>
-<% end %>
+</script>
+<script>
+  $(function(){
+    var timers = [];
+    <% current_user.timers.each do |timer| %>
+      var timer = {
+        id: '<%= timer.id %>',
+        label: '<%= timer.label %>',
+        icon: '<%= timer.icon %>',
+        elapsed: '<%= timer.elapsed_time %>',
+        active: <%= timer.is_active? %> 
+      }
+      timers.push(timer);
+    <% end %>
+    $("#timers").html($( "#timerTemplate" ).tmpl( timers ));
+  });
+</script>
+</div><!-- /page -->

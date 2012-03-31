@@ -1,1 +1,9 @@
-<%= link_to 'Login with Facebook', omniauth_authorize_path(resource_name, :facebook) %>
+<div data-role="page">
+
+	<div data-role="content" class="loginpage">
+		<%= image_tag '/images/logo-traqtastic.png' %><br />
+		<%= link_to 'Login with Facebook', omniauth_authorize_path(resource_name, :facebook), rel: 'external', :class => 'fblogin', :'data-role' => 'button' %>
+		<span class="copy">&copy 2012 It's easy Inc.</span>
+	</div>
+
+</div>

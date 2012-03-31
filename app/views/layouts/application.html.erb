@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
 
-    <title>TraqTastic</title>
-    <%= stylesheet_link_tag    "application" %>
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
-    <%= javascript_include_tag "application" %>
-    <script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
-    <%= csrf_meta_tags %>
-  </head>
-  <body>
+  <title>TraqTastic</title>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.css" />
+  <%= stylesheet_link_tag    "application" %>
 
-    <div data-role="header">
-      <h1>TraqTastic</h1>
-    </div><!-- /header -->
+  <%= javascript_include_tag "application" %>
+	<script src="http://code.jquery.com/mobile/1.1.0-rc.1/jquery.mobile-1.1.0-rc.1.min.js"></script>
+  <script src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+  <%= csrf_meta_tags %>
+</head>
+<body>
 
-    <%= yield %>
+  <%= yield %>
 
-  </body>
+</body>
 </html>
