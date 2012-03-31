@@ -2,14 +2,19 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  devise :omniauthable
+  devise :omniauthable, :rememberable
+
+  ## Rememberable
+  field :remember_created_at, :type => Time
 
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
     if user = User.where(:email => data.email).first
+      user.remember_me!
       user
     else # Create a user with a stub password.
       u = User.create!(:email => data.email, :password => Devise.friendly_token[0,20])
+      u.remember_me!
       self.set_defaults(u)
     end
   end
