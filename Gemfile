@@ -32,3 +32,5 @@ gem 'jquery-rails'
 
 gem 'devise'
 gem "omniauth-facebook"
+
+gem 'jbuilder'
