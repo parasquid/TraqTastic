@@ -6,6 +6,7 @@ class User
 
   ## Rememberable
   field :remember_created_at, :type => Time
+  field :remember_token
 
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
