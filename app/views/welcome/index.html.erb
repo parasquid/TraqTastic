@@ -60,12 +60,20 @@
     var obj = secondsToTime(secs);
 
     var time = '';
+    
     if(obj.h){
-      time += obj.h + ' h ';
+      time += obj.h + 'h ';
+    }
+    
+    if(obj.m){
+      time += obj.m + 'm ';
+    }
+    
+    if(obj.h == 0 && obj.m == 0){
+      time += obj.s + 's ';
     }
 
-    time += obj.m + ' m ';
-    time += obj.s + ' s';
+    
     return time;
   }
 
