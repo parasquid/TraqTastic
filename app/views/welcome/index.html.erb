@@ -20,8 +20,8 @@
 <%= render partial: 'welcome/reports', locals: {reposrts: @reports} %>
 
 <script id="timerTemplate" type="text/x-jquery-tmpl">
-  <div id="${id}" class="ui-block-b timer-container ${active}" data-id="${id}" data-et="${elapsed_time}" data-label="${label}" data-icon="${icon}" class="timer" style="background-color:${color}; margin: 1%; width: 47%">
-    <div class="timer">
+  <div id="${id}" class="{{if alternate}}ui-block-b{{else}}ui-block-a{{/if}} timer-container ${active}" data-id="${id}" data-et="${elapsed_time}" data-label="${label}" data-icon="${icon}">
+    <div class="timer" style="background-color:${color};">
       <div class="elapsed_time">${elapsed_time_text}</div>
       <div class="icon" style="background:transparent url(${icon}) center center no-repeat"></div>
     </div>
@@ -71,6 +71,7 @@
   $(function() {
 
     var timers = [];
+    var c = 0;
     <% current_user.timers.each do |timer| %>
       var timer = {
         id: '<%= timer.id %>',
@@ -79,8 +80,10 @@
         color: '<%= timer.color %>',
         elapsed_time: parseInt(<%= timer.elapsed_time %>),
         elapsed_time_text: returnTime(parseInt(<%= timer.elapsed_time %>)),
-        active: '<% if ( timer.active? ) %>active<% end %>'
+        active: '<% if ( timer.active? ) %>active<% end %>',
+        alternate: c % 2
       }
+      c++;
       timers.push(timer);
     <% end %>
 
