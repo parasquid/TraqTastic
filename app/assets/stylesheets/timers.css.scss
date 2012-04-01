@@ -77,6 +77,13 @@
   color:#fff;
 }
 
+.timer .elapsed_time {
+  position:absolute;
+  bottom:5px;
+  right:5px;
+  font-size:0.9em;
+}
+
 .editing .timer {
   margin:10px;
   height:105px;

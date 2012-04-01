@@ -23,6 +23,7 @@
   <div id="${id}" class="{{if alternate}}ui-block-b{{else}}ui-block-a{{/if}} timer-container ${active}" data-id="${id}" data-et="${elapsed_time}" data-label="${label}" data-icon="${icon}">
     <div class="timer" style="background-color:${color};">
       <div class="label">${label}</div>
+      <div class="elapsed_time">${elapsed_time_text}</div>
       <div class="icon" style="background:transparent url(${icon}) center center no-repeat"></div>
     </div>
   </div>
@@ -60,11 +61,11 @@
 
     var time = '';
     if(obj.h){
-      time += obj.h + ' hr ';
+      time += obj.h + ' h ';
     }
 
-    time += obj.m + ' min ';
-    time += obj.s + ' sec ';
+    time += obj.m + ' m ';
+    time += obj.s + ' s';
     return time;
   }
 
